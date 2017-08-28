@@ -179,7 +179,7 @@ ggplot(speeding %>% group_by(date = date(datetime)) %>% summarize(tickets = n())
     geom_col(color = "grey35")
 ```
 
-![](r-for-beginners_files/figure-markdown_github-ascii_identifiers/graph-1.png)
+![](r_for_beginners_files/figure-markdown_github-ascii_identifiers/graph-1.png)
 
 Let's break down what we did there. We're using a library called `ggplot` that's included in the `tidyverse`. It uses the same principles were were using earlier (with the annoying exception that we combine lines of code with `+` instead of `%>%`; this is a relic).
 
@@ -218,7 +218,7 @@ ggplot(speeding %>% group_by(date = date(datetime)) %>% summarize(tickets = n())
     geom_smooth()
 ```
 
-![](r-for-beginners_files/figure-markdown_github-ascii_identifiers/graph2-1.png)
+![](r_for_beginners_files/figure-markdown_github-ascii_identifiers/graph2-1.png)
 
 The lines jumped up and down a lot, so with `geom_smooth()` we added a trendline that shows more clearly that the number of tickets has gone up.
 
@@ -231,7 +231,7 @@ ggplot(speeding %>% group_by(date = date(datetime)) %>% summarize(tickets = n())
     labs(title = "Speeding tickets per day on Minnesota highways")
 ```
 
-![](r-for-beginners_files/figure-markdown_github-ascii_identifiers/graph3-1.png)
+![](r_for_beginners_files/figure-markdown_github-ascii_identifiers/graph3-1.png)
 
 The `labs()` function can do a lot more than just add a title:
 
@@ -246,7 +246,7 @@ ggplot(speeding %>% group_by(date = date(datetime)) %>% summarize(tickets = n())
          y = "Tickets written")
 ```
 
-![](r-for-beginners_files/figure-markdown_github-ascii_identifiers/graph4-1.png)
+![](r_for_beginners_files/figure-markdown_github-ascii_identifiers/graph4-1.png)
 
 Let's say you don't like the grey background. That's easy:
 
@@ -262,7 +262,7 @@ ggplot(speeding %>% group_by(date = date(datetime)) %>% summarize(tickets = n())
     theme_minimal()
 ```
 
-![](r-for-beginners_files/figure-markdown_github-ascii_identifiers/graph5-1.png)
+![](r_for_beginners_files/figure-markdown_github-ascii_identifiers/graph5-1.png)
 
 I'll show off a few more tricks. (This isn't as simple as adding a layer — I had to go back to our `ggplot()` function and alter the data we put in before adding the `facet_wrap()` layer.) Try running the code below:
 
@@ -279,7 +279,7 @@ ggplot(speeding %>% filter(violator_sex != "") %>% group_by(date = date(datetime
     facet_wrap(~ gender)
 ```
 
-![](r-for-beginners_files/figure-markdown_github-ascii_identifiers/graph6-1.png)
+![](r_for_beginners_files/figure-markdown_github-ascii_identifiers/graph6-1.png)
 
 (Notice how I renamed `violator_sex` to `gender` to make it easier to type.)
 
@@ -298,7 +298,7 @@ ggplot(speeding %>% filter(violator_sex != "") %>% group_by(date = date(datetime
     facet_wrap(~ gender)
 ```
 
-![](r-for-beginners_files/figure-markdown_github-ascii_identifiers/graph7-1.png)
+![](r_for_beginners_files/figure-markdown_github-ascii_identifiers/graph7-1.png)
 
 Final experiments
 -----------------
