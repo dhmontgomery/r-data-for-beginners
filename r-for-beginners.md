@@ -27,7 +27,7 @@ Getting started
 
 You all have a program on your computers called RStudio. Open it up now.
 
-You'll see that the screen is divided into four sections. In the upper left you can view your data. In the lower left is the Console — that's where you'll type in your code. You should see a `>` symbol with a cursor next to it.
+You'll see that the screen is divided into four sections. In the upper left you'll be able to view your data. In the lower left is the Console — that's where you'll type in your code. You should see a `>` symbol with a cursor next to it.
 
 The other two sections we can ignore for now.
 
@@ -35,7 +35,9 @@ Before we do anything, let's talk a little bit about how code is structured. It 
 
 The core of R are "functions." Think of them as **verbs** — a function *does something*. Functions all have names, like `sum` or `round`.
 
-Our verbs (functions) also take nouns — the things that the function acts upon. They're called variables, and they go inside parentheses after functions. Here's a simple example:
+Our verbs (functions) also take nouns — the things that the function acts upon. They're called variables, and they go inside parentheses after functions. This is just like working with formulas in Excel, except you don't have to type `=` beforehand.
+
+Here's a simple example:
 
 ``` r
 sum(1, 2, 3, 4, 5)
@@ -83,7 +85,7 @@ Now let's get our data. We're going to use that `read.csv` function we discussed
 speeding <- read.csv("speedingdata.csv", stringsAsFactors = FALSE)
 ```
 
-It took a few seconds to load because of the file's size, but this still happened far faster than Excel would have opened that same file. (Ignore that `stringsAsFactors` parameter there; it's important but isn't worth the time to explain why.)
+It took a few seconds to load because of the file's size, but this still happened far faster than Excel would have opened that same file. (Ignore that `stringsAsFactors` parameter there; it's important but isn't worth the time to [explain why](https://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/).)
 
 In RStudio, we're now going to look at one of the panes we ignored earlier. In the upper-right, there's a pane called "Environment", and in it, you can see two items — the two variables we've defined, `my_value` and `speeding`. Click on `speeding` — and notice the upper-left panel change. You can preview your data there!
 
@@ -177,7 +179,7 @@ ggplot(speeding %>% group_by(date = date(datetime)) %>% summarize(tickets = n())
     geom_col(color = "grey35")
 ```
 
-![](r-for-beginners-files/figure-markdown_github-ascii_identifiers/graph-1.png)
+![](r-for-beginners_files/figure-markdown_github-ascii_identifiers/graph-1.png)
 
 Let's break down what we did there. We're using a library called `ggplot` that's included in the `tidyverse`. It uses the same principles were were using earlier (with the annoying exception that we combine lines of code with `+` instead of `%>%`; this is a relic).
 
@@ -216,7 +218,7 @@ ggplot(speeding %>% group_by(date = date(datetime)) %>% summarize(tickets = n())
     geom_smooth()
 ```
 
-![](r-for-beginners-files/figure-markdown_github-ascii_identifiers/graph2-1.png)
+![](r-for-beginners_files/figure-markdown_github-ascii_identifiers/graph2-1.png)
 
 The lines jumped up and down a lot, so with `geom_smooth()` we added a trendline that shows more clearly that the number of tickets has gone up.
 
@@ -229,7 +231,7 @@ ggplot(speeding %>% group_by(date = date(datetime)) %>% summarize(tickets = n())
     labs(title = "Speeding tickets per day on Minnesota highways")
 ```
 
-![](r-for-beginners-files/figure-markdown_github-ascii_identifiers/graph3-1.png)
+![](r-for-beginners_files/figure-markdown_github-ascii_identifiers/graph3-1.png)
 
 The `labs()` function can do a lot more than just add a title:
 
@@ -244,7 +246,7 @@ ggplot(speeding %>% group_by(date = date(datetime)) %>% summarize(tickets = n())
          y = "Tickets written")
 ```
 
-![](r-for-beginners-files/figure-markdown_github-ascii_identifiers/graph4-1.png)
+![](r-for-beginners_files/figure-markdown_github-ascii_identifiers/graph4-1.png)
 
 Let's say you don't like the grey background. That's easy:
 
@@ -260,7 +262,7 @@ ggplot(speeding %>% group_by(date = date(datetime)) %>% summarize(tickets = n())
     theme_minimal()
 ```
 
-![](r-for-beginners-files/figure-markdown_github-ascii_identifiers/graph5-1.png)
+![](r-for-beginners_files/figure-markdown_github-ascii_identifiers/graph5-1.png)
 
 I'll show off a few more tricks. (This isn't as simple as adding a layer — I had to go back to our `ggplot()` function and alter the data we put in before adding the `facet_wrap()` layer.) Try running the code below:
 
@@ -277,7 +279,7 @@ ggplot(speeding %>% filter(violator_sex != "") %>% group_by(date = date(datetime
     facet_wrap(~ gender)
 ```
 
-![](r-for-beginners-files/figure-markdown_github-ascii_identifiers/graph6-1.png)
+![](r-for-beginners_files/figure-markdown_github-ascii_identifiers/graph6-1.png)
 
 (Notice how I renamed `violator_sex` to `gender` to make it easier to type.)
 
@@ -296,7 +298,7 @@ ggplot(speeding %>% filter(violator_sex != "") %>% group_by(date = date(datetime
     facet_wrap(~ gender)
 ```
 
-![](r-for-beginners-files/figure-markdown_github-ascii_identifiers/graph7-1.png)
+![](r-for-beginners_files/figure-markdown_github-ascii_identifiers/graph7-1.png)
 
 Final experiments
 -----------------
