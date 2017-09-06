@@ -12,4 +12,4 @@ Here's how to get started:
 install.packages(c("tidyverse", "lubridate", "scales"))
 ```
 
-Then just follow the instructions in [`r-for-beginners.md`](https://github.com/dhmontgomery/r_data_for_beginners/blob/master/r_for_beginners.md)
+Then just follow the instructions in [`r-for-beginners.md`](https://github.com/dhmontgomery/r-data-for-beginners/blob/master/r_for_beginners.md)
