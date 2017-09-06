@@ -3,6 +3,8 @@ Coding for beginners
 David Montgomery
 8/7/2017
 
+If you aren't fully set up for this lesson, follow the instructions [here](https://github.com/dhmontgomery/r-data-for-beginners/blob/master/README.md).
+
 Introduction
 ------------
 
@@ -27,7 +29,7 @@ Getting started
 
 You all have a program on your computers called RStudio. Open it up now.
 
-You'll see that the screen is divided into four sections. In the upper left you'll be able to view your data. In the lower left is the Console — that's where you'll type in your code. You should see a `>` symbol with a cursor next to it.
+You'll see that the screen is divided into three sections. On the left is the Console — that's where you'll type in your code. You should see a `>` symbol with a cursor next to it.
 
 The other two sections we can ignore for now.
 
@@ -58,7 +60,7 @@ read.csv("test.csv", header = TRUE)
 
 Don't run that — you don't have a "test.csv" so it won't work. But you can see how this grammar works — inside a function you can specify both variables and parameters. You could run the above code with `header = FALSE`, too, depending on what you needed.
 
-So far we've talked about variables that already exist — files, or numbers. But you can also really easily create your own variables, using `<-` — a very basic function that you can think of like the verb "to be".
+So far we've talked about variables that already exist — files, or numbers. But you can also really easily create your own variables, using `<-`. That's called the "assignment operator", and it's a very basic function that you can think of like the verb "to be".
 
 `my_value <- sum(1, 2, 3, 4,5)` essentially means `my_value` IS the sum of 1, 2, 3, 4 and 5. Try entering that line of code in your console. Then type `my_value` into the console and hit enter. What do you get?
 
@@ -87,9 +89,9 @@ speeding <- read.csv("speedingdata.csv", stringsAsFactors = FALSE)
 
 It took a few seconds to load because of the file's size, but this still happened far faster than Excel would have opened that same file. (Ignore that `stringsAsFactors` parameter there; it's important but isn't worth the time to [explain why](https://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/).)
 
-In RStudio, we're now going to look at one of the panes we ignored earlier. In the upper-right, there's a pane called "Environment", and in it, you can see two items — the two variables we've defined, `my_value` and `speeding`. Click on `speeding` — and notice the upper-left panel change. You can preview your data there!
+In RStudio, we're now going to look at one of the panes we ignored earlier. In the upper-right, there's a pane called "Environment", and in it, you can see two items — the two variables we've defined, `my_value` and `speeding`. Click on `speeding` — and notice a new panel appear on the top of the left side of the screen. You can preview your data there!
 
-(If you wanted to, you could also enter `speeding` into the console to see it there, like we did earlier for `my_value`. But **don't do this** — `my_value` was a single numnber, while `speeding` has 224,915 rows. That's a lot of scrolling.)
+(If you wanted to, you could also enter `speeding` into the console to see it there, like we did earlier for `my_value`. But **don't do this** — `my_value` was a single number, while `speeding` has 224,915 rows. That's a lot of scrolling.)
 
 You can see our spreadsheet has seven columns: `datetime`, `violation_city`, `violation_county`, `actual_speed`, `posted_speed`, `age` and `violator_sex`. Scroll through the spreadsheet a little.
 
@@ -162,9 +164,19 @@ Now you see why I describe programming as being like a grammar. It's a series of
 
 (Note that we weren't using the `$` operator in that code. That's because the library we loaded earlier handles that for us — as long as we've got a code sentence going starting with an input data frame like `speeding`, it assumes that we're referring to that data frame and lets us save characters. Think of it like a pronoun. If you're not using `tidyverse` functions you'll still need to use the `$`.)
 
-Let's try using this same syntax to do something else. Why don't you try to calculate the maximum miles per hour ticketed in each city in Ramsey County.
+Let's try using this same syntax to do something else. In RStudio, click File &gt; New File &gt; R Script. Paste the block of code from above in here. Let's **edit** this code to try to calculate the maximum miles per hour ticketed in each city in Ramsey County.
 
-Hints: The `max()` function operates just like `mean()`. You'll still want to filter out negative `miles_over`, but remember we want actual speed, not miles over. Take a look at the different columns available to us.
+Hints:
+
+-   We want to define this new table as something other than `speeding_counties`
+-   The `max()` function operates just like `mean()`.
+-   We'll need to filter down to just Ramsey County (and check how Ramsey County is formatted in the data)
+-   To filter equal to a value, you need to use the `==` symbol — two equals signs.
+-   You'll still want to filter out negative `miles_over`
+-   Remember that what we want to calculate is **actual speed**, not miles over. Take a look at the different columns available to us.
+-   The `filter()` function can filter by more than one thing. Just separate each argument inside `filter()` with commas.
+
+Once you've edited this code how you want in RStudio's text editor, you can run this all at once. Just select the code you want to run, as many lines as you want, and hit Control-Enter (Command-Enter on a Mac).
 
 There are other `tidyverse` functions besides `filter()`, `group_by()`, `summarize()` and `arrange()`, but not that many. You can do almost anything you want to do with data with less than a dozen functions!
 
@@ -180,6 +192,8 @@ ggplot(speeding %>% group_by(date = date(datetime)) %>% summarize(tickets = n())
 ```
 
 ![](r_for_beginners_files/figure-markdown_github-ascii_identifiers/graph-1.png)
+
+Run that code yourself and take a look in the lower-right corner of RStudio — a graph should appear!
 
 Let's break down what we did there. We're using a library called `ggplot` that's included in the `tidyverse`. It uses the same principles were were using earlier (with the annoying exception that we combine lines of code with `+` instead of `%>%`; this is a relic).
 
@@ -203,9 +217,12 @@ Let's break down what we did above:
 
 ### Experiment
 
+Clear out the old code from your RStudio text document and paste in the above `ggplot()` code. Then edit it to try to answer the following questions:
+
+-   Try deleting `color = "grey35"` from the function. What's different?
 -   What happens if you just run `ggplot(speeding %>% group_by(date = date(speeding$datetime)) %>% summarize(tickets = n()), aes(date, tickets))` without adding a geometry?
+-   What happens if you put `fill = "red"` inside `geom_col()` where `color = "grey35"` was?
 -   What happens if you change `geom_col(...)` to `geom_point()` or `geom_line()`?
--   What happens if you replace `color = "grey35"` with `fill = "red"`?
 
 Better graphs
 -------------
@@ -283,7 +300,7 @@ ggplot(speeding %>% filter(violator_sex != "") %>% group_by(date = date(datetime
 
 (Notice how I renamed `violator_sex` to `gender` to make it easier to type.)
 
-Let's add a splash of color! Earlier we saw how adding `fill = "red"` to a geometry could change the fill of the bars. But we can also assign colors based on our data. So we're going to add `aes(fill = violator_sex, color = violator_sex)` to the inside of `geom_col()`:
+Let's add a splash of color! Earlier we saw how adding `fill = "red"` to a geometry could change the fill of the bars. But we can also assign colors based on our data. So we're going to add `aes(fill = gender, color = gender)` to the inside of `geom_col()`:
 
 ``` r
 ggplot(speeding %>% filter(violator_sex != "") %>% group_by(date = date(datetime), gender = violator_sex) %>% summarize(tickets = n()), aes(date, tickets)) +
