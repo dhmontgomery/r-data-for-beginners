@@ -71,7 +71,7 @@ We assigned a very basic value to a variable, but variables can be much more com
 Getting our data
 ----------------
 
-We're doing to be working with a spreadsheet that'd be tricky to work with in a conventional spreadsheet: a dataset of speeding tickets issued by the Minnesota State Patrol over the past 3.5 years. There are 224,915 different tickets in the dataset, and even though I've removed some extraneous data, the file is still nearly 15 MB. That's too big for Excel to handle comfortably. (Before Excel 2007, it couldn't have handled it at all.) R will handle it easily, though.
+We're going to be working with a spreadsheet that'd be tricky to work with in a conventional spreadsheet: a dataset of speeding tickets issued by the Minnesota State Patrol over the past 3.5 years. There are 224,915 different tickets in the dataset, and even though I've removed some extraneous data, the file is still nearly 15 MB. That's too big for Excel to handle comfortably. (Before Excel 2007, it couldn't have handled it at all.) R will handle it easily, though.
 
 Before we begin, we need to do one thing. Copy and paste the following code into your console:
 
