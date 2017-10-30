@@ -14,4 +14,4 @@ install.packages(c("tidyverse", "lubridate", "scales"))
 
 - Set your "working directory" in RStudio to the location of `speedingdata.csv`, the data you downloaded. You can do this by clicking the Session Menu > Set Working Directory > Choose Directory and then navigating to the folder where the data is.
 
-Then just follow the instructions in [`r-for-beginners.md`](https://github.com/dhmontgomery/r-data-for-beginners/blob/master/r_for_beginners.md)!
+Once you'v done that, you're ready to start the lesson in [`r-for-beginners.md`](https://github.com/dhmontgomery/r-data-for-beginners/blob/master/r_for_beginners.md)!
